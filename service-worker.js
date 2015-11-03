@@ -1,28 +1,25 @@
-// The service worker running in background to receive the incoming
-// push notifications and user clicks
+'use strict';
 
-// A push has arrived ...
 self.addEventListener('push', function(event) {
-  // Since there is no payload data with the first version  
-  // of push messages, we'll use some static content. 
-  // However you could grab some data from  
-  // an API and use it to populate a notification
+  console.log('Received a push message', event);
 
-  var title = 'Título de la notificación';  
-  var body = 'Cuerpo del mensaje';  
-  var icon = 'img/realtime-logo.jpg'; 
+  var title = 'Yay a message.';
+  var body = 'We have received a push message.';
+  var icon = '/images/icon-192x192.png';
+  var tag = 'simple-push-demo-notification-tag';
 
-  event.waitUntil(  
-    self.registration.showNotification(title, {  
-      body: body,  
-      icon: icon
-    })  
-  );  
+  event.waitUntil(
+    self.registration.showNotification(title, {
+      body: body,
+      icon: icon,
+      tag: tag
+    })
+  );
 });
 
 
-// The user has clicked on the notification ...
 self.addEventListener('notificationclick', function(event) {
+  console.log('On notification click: ', event.notification.tag);
   // Android doesn’t close the notification when you click on it
   // See: http://crbug.com/463146
   event.notification.close();
@@ -37,8 +34,8 @@ self.addEventListener('notificationclick', function(event) {
       if (client.url == '/' && 'focus' in client)
         return client.focus();
     }
-    if (clients.openWindow)      
-      var url = '/chrome-push/index.html';    
-      return clients.openWindow(url);
+    if (clients.openWindow)
+      return clients.openWindow('/');
   }));
+
 });
