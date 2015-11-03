@@ -3,16 +3,16 @@
 self.addEventListener('push', function(event) {
   console.log('Received a push message', event);
 
+  // Estos valores son estáticos, por lo que hace falta una función que recupere los valores de forma dinámica
+  
   var title = 'Notificación Push';
   var body = 'Good news everyone!';
-  var url = 'www.google.es';
   var icon = '/images/icon-192x192.png';
   var tag = 'simple-push-demo-notification-tag';
 
   event.waitUntil(
     self.registration.showNotification(title, {
       body: body,
-	  url: url,
       icon: icon,
       tag: tag
     })
