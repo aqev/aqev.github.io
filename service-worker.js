@@ -58,10 +58,9 @@ self.addEventListener('push', function(event) {
             throw new Error();
           }
 
-          var title = 'What\'s the weather like in London?';
+          var title = 'Experian Push Demo';
           var message = data.query.results.channel.item.condition.text;
-          var icon = data.query.results.channel.image.url ||
-            'images/touch/chrome-touch-icon-192x192.png';
+          var icon = 'images/icon-192x192.png';
           var notificationTag = 'simple-push-demo-notification';
 
           // Add this to the data of the notification
@@ -103,7 +102,7 @@ self.addEventListener('push', function(event) {
                   existingNotification.close();
                 }
                 message = 'You have ' + notificationCount +
-                  ' weather updates.';
+                  ' updates.';
                 notificationData.notificationCount = notificationCount;
               }
 
