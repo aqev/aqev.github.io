@@ -5,12 +5,14 @@ self.addEventListener('push', function(event) {
 
   var title = 'Notificación Push';
   var body = 'Mensajito de prueba';
+  var url = 'www.google.es';
   var icon = '/images/icon-192x192.png';
   var tag = 'simple-push-demo-notification-tag';
 
   event.waitUntil(
     self.registration.showNotification(title, {
       body: body,
+	  url: url,
       icon: icon,
       tag: tag
     })
