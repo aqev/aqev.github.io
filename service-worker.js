@@ -4,7 +4,7 @@ self.addEventListener('push', function(event) {
   console.log('Received a push message', event);
 
   var title = 'Notificación Push';
-  var body = 'Good news everyone!';
+  var body = 'Mensaje informativo :D';
   var icon = '/images/icon-192x192.png';
   var tag = 'simple-push-demo-notification-tag';
   
@@ -17,6 +17,7 @@ self.addEventListener('push', function(event) {
     self.registration.showNotification(title, {
       body: body,
       icon: icon,
+	  notificationData : notificationData,
       tag: tag
     })
   );
