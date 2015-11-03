@@ -4,7 +4,7 @@ self.addEventListener('push', function(event) {
   console.log('Received a push message', event);
 
   var title = 'Notificación Push';
-  var body = 'Mensajito de prueba';
+  var body = 'Good news everyone!';
   var url = 'www.google.es';
   var icon = '/images/icon-192x192.png';
   var tag = 'simple-push-demo-notification-tag';
