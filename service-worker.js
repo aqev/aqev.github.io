@@ -1,5 +1,5 @@
 'use strict';
-
+/*
 self.addEventListener('push', function(event) {
   console.log('Received a push message', event);
 
@@ -19,7 +19,7 @@ self.addEventListener('push', function(event) {
   );
 });
 
-/*
+
 self.addEventListener('notificationclick', function(event) {
   console.log('On notification click: ', event.notification.tag);
   // Android doesn’t close the notification when you click on it
