@@ -2,5 +2,5 @@
 	"title":"Notificación en json",
 	"body":"El mensaje se puede cambiar en data.json",
 	"icon":"",
-	"link":"www.experian.com"
+	"link":"http://www.experian.com"
 }
