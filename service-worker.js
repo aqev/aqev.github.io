@@ -2,6 +2,7 @@
 
 importScripts('/indexdbwrapper.js');
 
+var PUSHDATA = 'https://aqev.github.io/data.json'
 var YAHOO_WEATHER_API_ENDPOINT = 'https://query.yahooapis.com/' +
   'v1/public/yql?q=select%20*%20from%20weather.forecast%20where%' +
   '20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where' +
@@ -42,7 +43,7 @@ self.addEventListener('push', function(event) {
   // of Push notifications, here we'll grab some data from
   // an API and use it to populate a notification
   event.waitUntil(
-    fetch(YAHOO_WEATHER_API_ENDPOINT)
+    fetch(PUSHDATA)
       .then(function(response) {
         if (response.status !== 200) {
           console.log('Looks like there was a problem. Status Code: ' +
@@ -53,18 +54,18 @@ self.addEventListener('push', function(event) {
 
         // Examine the text in the response
         return response.json().then(function(data) {
-          if (data.query.count === 0) {
+          //if (data.query.count === 0) {
             // Throw an error so the promise is rejected and catch() is executed
-            throw new Error();
-          }
+          //  throw new Error();
+          //}
 
-          var title = 'Experian Push Demo';
-          var message = data.query.results.channel.item.condition.text;
+          var title = data.title;
+          var message = data.body;
           var icon = 'images/icon-192x192.png';
           var notificationTag = 'simple-push-demo-notification';
 
           // Add this to the data of the notification
-          var urlToOpen = data.query.results.channel.link;
+          var urlToOpen = data.link;
 
           if (!Notification.prototype.hasOwnProperty('data')) {
             // Since Chrome doesn't support data at the moment
