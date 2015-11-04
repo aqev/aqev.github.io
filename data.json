@@ -1,6 +1,6 @@
 {
-	"title":"Notificación en json",
-	"body":"El mensaje se puede cambiar en data.json",
+	"title":"Notificación Push por Web",
+	"body":"Breve descripción de la notificación",
 	"icon":"",
 	"link":"http://www.experian.com"
 }
